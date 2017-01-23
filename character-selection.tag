@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-block">
       <h1 class="display-3 card-title">Killpoints</h1>
-      <p class="card-text">Want to know when you are due for you next legendary?</p>
+      <p class="card-text">Want to know when you are due for your next legendary?</p>
 
       <form class="form-inline" onsubmit={ calculateKillpoints }>
         <input type="text" class="form-control" ref="realm" placeholder="EU Twisting Nether">

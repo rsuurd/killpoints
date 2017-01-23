@@ -1,5 +1,6 @@
 body {
   background: url('../assets/background.jpg');
+  background-size: cover;
 }
 
 #character-selection {
