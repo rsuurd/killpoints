@@ -1,7 +1,7 @@
 route.start(true);
 
 route(function(region, server, character) {
-  calculate(region, server, character, function(data) {
+  calculate(region, server.replace(/-/g, ' '), character, function(data) {
     riot.mount('main', 'killpoints', data);
   })
 });
