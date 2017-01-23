@@ -1,8 +1,13 @@
 route.start(true);
 
+route('/', function() {
+  riot.mount('#character-selection', 'character-selection');
+});
 route(function(region, server, character) {
+  riot.mount('#character-selection', 'character-selection');
+
   calculate(region, server.replace(/-/g, ' '), character, function(data) {
-    riot.mount('main', 'killpoints', data);
+    riot.mount('#killpoints', 'killpoints', data);
   })
 });
 

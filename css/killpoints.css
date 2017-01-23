@@ -1,0 +1,16 @@
+body {
+  background: url('../assets/background.jpg');
+}
+
+#character-selection {
+  padding-top: 12rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  color: white;
+}
