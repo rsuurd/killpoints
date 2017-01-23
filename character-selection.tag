@@ -5,7 +5,15 @@
       <p class="card-text">Want to know when you are due for your next legendary?</p>
 
       <form class="form-inline" onsubmit={ calculateKillpoints }>
-        <input type="text" class="form-control" ref="realm" placeholder="EU Twisting Nether">
+        <select ref="region" class="custom-select" onchange = { listRealms }>
+          <option selected>Choose region</option>
+          <option value="cn">CN</option>
+          <option value="eu">EU</option>
+          <option value="kr">KR</option>
+          <option value="tw">TW</option>
+          <option value="us">US</option>
+        </select>
+        <input type="text" class="form-control" ref="realm" placeholder="Region and realm" data-provide="typeahead" autocomplete="off">
         <input type="text" class="form-control" ref="character" placeholder="Character name">
 
         <input type="submit" class="btn btn-primary" value="Calculate">
@@ -13,14 +21,22 @@
     </div>
   </div>
   <script>
+    const REALMS = {
+      'eu': ['Twisting Nether', 'Talnivarr']
+    };
+
     calculateKillpoints(event) {
       event.preventDefault();
 
-      var realm = this.refs.realm.value.substring(0, 2).trim().toLowerCase();
-      var server = this.refs.realm.value.substring(2).trim().toLowerCase();
+      var region = this.refs.region.value;
+      var realm = this.refs.realm.value.trim().toLowerCase();
       var charactername = this.refs.character.value.trim().toLowerCase();
 
-      route([realm, server, charactername].join('/'));
+      route([region, realm, charactername].join('/'));
+    }
+
+    listRealms(event) {
+      $(this.refs.realm).typeahead({ source: REALMS[this.refs.region.value] });
     }
   </script>
 </character-selection>
