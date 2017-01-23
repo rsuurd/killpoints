@@ -7,7 +7,7 @@ route(function(region, server, character) {
 });
 
 function calculate(region, server, character, callback) {
-  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(server) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=kr2bfgpv5wtx5entzwkvvq6kqpwfwg7e';
+  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(server) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=' + API_KEY;
 
   fetch(url, {
     headers: {
@@ -43,9 +43,9 @@ function getWeeklyChestKillpoints(achievements) {
   var index = achievements.achievementsCompleted.indexOf(10671);
 
   if (index >= 0) {
-    var weeks110 = moment(new Date()).diff(achievements.achievementsCompletedTimestamp[index], 'weeks');
+    var weeklyChests = moment().diff(moment.max(CHEST_AVAILABLE, moment(achievements.achievementsCompletedTimestamp[index])), 'weeks');
 
-    killpoints += weeks110 * 11;
+    killpoints += weeklyChests * 11;
   }
 
   return killpoints;
@@ -80,15 +80,19 @@ function getRaidKillpoints(raids) {
   return killpoints;
 }
 
+const API_KEY = 'kr2bfgpv5wtx5entzwkvvq6kqpwfwg7e';
+
+const CHEST_AVAILABLE = moment('2016-09-21');
+
 const KEYSTONES = [
   33096, // Initiate
   33097, // Challenger
   33098, // Conqueror
   32028  // Master
-]
+];
 
 const RAIDS = {
   8440: 'Trial of Valor',
   8025: 'Nighthold',
   8026: 'Emerald Nightmare'
-}
+};
