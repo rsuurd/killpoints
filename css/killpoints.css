@@ -22,6 +22,10 @@ body {
   margin-top: 1rem;
 }
 
+input {
+    text-transform: capitalize;;
+}
+
 .alert {
   margin-top: 1rem;
 }
