@@ -23,9 +23,13 @@ function calculate(region, server, character, callback) {
   }).then(function(json) {
     callback({
       'name': json.name,
-      'killpoints': getDailyKillpoints(json.achievements) + getWeeklyChestKillpoints(json.achievements) + getMythicPlusKillpoints(json.achievements) + getRaidKillpoints(json.progression.raids)
+      'killpoints': getKillpoints(json)
     });
   });
+}
+
+function getKillpoints(json) {
+  return Math.round(getDailyKillpoints(json.achievements) + getWeeklyChestKillpoints(json.achievements) + getMythicPlusKillpoints(json.achievements) + getRaidKillpoints(json.progression.raids));
 }
 
 function getDailyKillpoints(achievements) {

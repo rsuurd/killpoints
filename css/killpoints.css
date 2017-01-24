@@ -5,9 +5,12 @@ body {
 }
 
 #character-selection {
-  padding-top: 12rem;
+  padding-top: 6rem;
 }
 
+.killpoints {
+  font-size: x-large;
+}
 .footer {
   position: absolute;
   bottom: 0;
