@@ -28,6 +28,6 @@ body {
   min-height: 6rem;
 }
 
-.footer a, .footer em {
+.footer a, .footer em, .footer i {
   color: #fcab0e;
 }
