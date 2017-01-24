@@ -7,11 +7,7 @@
       <form class="form-inline" onsubmit={ calculateKillpoints }>
         <select ref="region" class="custom-select" onchange = { listRealms }>
           <option selected>Choose region</option>
-          <option value="cn">CN</option>
-          <option value="eu">EU</option>
-          <option value="kr">KR</option>
-          <option value="tw">TW</option>
-          <option value="us">US</option>
+          <option each={ region in regions } value = { region }>{ region.toUpperCase() }</option>
         </select>
         <input type="text" class="form-control" ref="realm" placeholder="Region and realm" data-provide="typeahead" autocomplete="off">
         <input type="text" class="form-control" ref="character" placeholder="Character name">
@@ -21,9 +17,7 @@
     </div>
   </div>
   <script>
-    const REALMS = {
-      'eu': ['Twisting Nether', 'Talnivarr']
-    };
+    this.regions = Object.keys(REALMS);
 
     calculateKillpoints(event) {
       event.preventDefault();
