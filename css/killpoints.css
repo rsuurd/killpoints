@@ -22,6 +22,10 @@ body {
   margin-top: 1rem;
 }
 
+.alert {
+  margin-top: 1rem;
+}
+
 .footer {
   padding-top: 1rem;
   color: white;

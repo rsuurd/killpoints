@@ -29,7 +29,7 @@
       if (region && realm && charactername) {
         route([region, realm, charactername].join('/'));
       } else {
-        console.log('error');
+        riot.mount('#killpoints', 'error', { message: 'Please fill in a region, realm and character name'});
       }
     }
 

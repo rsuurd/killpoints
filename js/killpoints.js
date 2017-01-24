@@ -21,12 +21,18 @@ function calculate(region, server, character, callback) {
       'Access-Control-Allow-Origin': '*'
     }
 	}).then(function(response) {
-    return response.json();
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response.statusText);
+    }
   }).then(function(json) {
     callback({
       'name': json.name,
       'killpoints': getKillpoints(json)
     });
+  }).catch(function(error) {
+    riot.mount('#killpoints', 'error', { message: error });
   });
 }
 
