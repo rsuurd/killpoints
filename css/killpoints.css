@@ -1,11 +1,17 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   background: url('../assets/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 8rem;
 }
 
 #character-selection {
-  padding-top: 6rem;
+  margin-top: 6rem;
 }
 
 .killpoints {
