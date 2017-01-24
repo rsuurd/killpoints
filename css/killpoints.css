@@ -18,6 +18,10 @@ body {
   font-size: x-large;
 }
 
+.card {
+  margin-top: 1rem;
+}
+
 .footer {
   padding-top: 1rem;
   color: white;

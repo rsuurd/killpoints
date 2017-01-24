@@ -12,6 +12,8 @@ route(function(region, server, character) {
 });
 
 function calculate(region, server, character, callback) {
+  riot.mount('#killpoints', 'loading');
+
   var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(server) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=' + API_KEY;
 
   fetch(url, {

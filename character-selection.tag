@@ -26,7 +26,11 @@
       var realm = this.refs.realm.value.trim().toLowerCase();
       var charactername = this.refs.character.value.trim().toLowerCase();
 
-      route([region, realm, charactername].join('/'));
+      if (region && realm && charactername) {
+        route([region, realm, charactername].join('/'));
+      } else {
+        console.log('error');
+      }
     }
 
     listRealms(event) {
