@@ -3,18 +3,18 @@ route.start(true);
 route('/', function() {
   riot.mount('#character-selection', 'character-selection');
 });
-route(function(region, server, character) {
-  riot.mount('#character-selection', 'character-selection');
+route(function(region, realm, character) {
+  riot.mount('#character-selection', 'character-selection', { 'region': region, 'realm': realm, 'character': character });
 
-  calculate(region, server.replace(/-/g, ' '), character, function(data) {
+  calculate(region, realm.replace(/-/g, ' '), character, function(data) {
     riot.mount('#killpoints', 'killpoints', data);
   })
 });
 
-function calculate(region, server, character, callback) {
+function calculate(region, realm, character, callback) {
   riot.mount('#killpoints', 'loading');
 
-  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(server) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=' + API_KEY;
+  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(realm) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=' + API_KEY;
 
   fetch(url, {
     headers: {

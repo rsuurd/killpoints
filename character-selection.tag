@@ -6,11 +6,12 @@
 
       <form class="form-inline" onsubmit={ calculateKillpoints }>
         <select ref="region" class="custom-select" onchange = { listRealms }>
-          <option selected>Choose region</option>
+          <option>Choose region</option>
+
           <option each={ region in regions } value = { region }>{ region.toUpperCase() }</option>
         </select>
-        <input type="text" class="form-control" ref="realm" placeholder="Region and realm" data-provide="typeahead" autocomplete="off">
-        <input type="text" class="form-control" ref="character" placeholder="Character name">
+        <input type="text" class="form-control" ref="realm" placeholder="Region and realm" data-provide="typeahead" autocomplete="off" value={ opts.realm }>
+        <input type="text" class="form-control" ref="character" placeholder="Character name" value={ opts.character }>
 
         <input type="submit" class="btn btn-primary" value="Calculate">
       </form>
@@ -18,6 +19,12 @@
   </div>
   <script>
     this.regions = Object.keys(REALMS);
+
+    this.on('mount', function() {
+      if (opts.region) {
+        this.refs.region.value = opts.region;
+      }
+    });
 
     calculateKillpoints(event) {
       event.preventDefault();
