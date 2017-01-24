@@ -6,7 +6,7 @@
 
       <form class="form-inline" onsubmit={ calculateKillpoints }>
         <select ref="region" class="custom-select" onchange = { listRealms }>
-          <option>Choose region</option>
+          <option value="">Choose region</option>
 
           <option each={ region in regions } value = { region }>{ region.toUpperCase() }</option>
         </select>
@@ -23,6 +23,8 @@
     this.on('mount', function() {
       if (opts.region) {
         this.refs.region.value = opts.region;
+
+        $(this.refs.realm).typeahead({ source: REALMS[this.refs.region.value] });
       }
     });
 
