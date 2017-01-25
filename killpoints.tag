@@ -7,14 +7,15 @@
       <table class="table table-sm">
         <thead>
           <tr>
-            <th colspan="2">Estimated legendaries per killpoints</th>
+            <th>Number of legendaries</th>
+            <th class="text-right">Killpoints</th>
           </tr>
         </thead>
         <tbody>
           <tr each={ breakpoint, legendary in breakpoints }>
             <td if={ legendary == 0} class={ table-success: (breakpoint <= killpoints) }> 1 legendary</td>
             <td if={ legendary > 0} class={ table-success: (breakpoint <= killpoints) }> { legendary + 1} legendaries</td>
-            <td class={ table-success: (breakpoint <= killpoints) }>{ breakpoint }</td>
+            <td class="text-right { table-success: (breakpoint <= killpoints) }">{ breakpoint }</td>
           </tr>
         </tbody>
       </table>
