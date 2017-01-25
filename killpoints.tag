@@ -37,7 +37,7 @@
 
         if (amount == 0) {
           message = "Keep going! Your first legendary will be quick!";
-        } else if (amount ==1 ) {
+        } else if (amount == 1) {
           message = "You should have received your first legendary by now.";
         } else {
           message = "You should have received " + amount + " legendaries so far.";
