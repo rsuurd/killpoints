@@ -1,5 +1,5 @@
 const REALMS = {
-  "eu": ["Aegwynn",  "Aerie Peak",  "Agamaggan",  "Aggra",  "Aggramar",  "Ahn'Qiraj",  "Al'Akir",  "Alexstrasza",  "Alleria",
+  "eu": ["Aegwynn",  "Aerie Peak",  "Agamaggan",  "Aggra (Português)",  "Aggramar",  "Ahn'Qiraj",  "Al'Akir",  "Alexstrasza",  "Alleria",
          "Alonsus",  "Aman'Thul",  "Ambossar",  "Anachronos",  "Anetheron",  "Antonidas",  "Anub'arak",  "Arak-arahm",  "Arathi",
          "Arathor",  "Archimonde",  "Area 52",  "Argent Dawn",  "Arthas",  "Arygos",  "Ashenvale",  "Aszune",  "Auchindoun",
          "Azjol-Nerub",  "Azshara",  "Azuregos",  "Azuremyst",  "Baelgun",  "Balnazzar",  "Benedictus",  "Beta Leveling Realm 01",
@@ -40,7 +40,7 @@ const REALMS = {
          "Argent Dawn", "Arthas", "Arygos", "Auchindoun", "Azgalor", "Azjol-Nerub", "Azralon", "Azshara", "Azuremyst", "Baelgun",
          "Balnazzar", "Barthilas", "Benedictus", "Beta Leveling Realm 01", "Beta Leveling Realm 03",  "Beta Max Level PvP",
          "Black Dragonflight", "Blackhand", "Blackrock", "Blackwater Raiders", "Blackwing Lair", "Bladefist", "Blade's Edge",
-         "Bleeding Hollow",  "Blood Furnace", "Bloodhoof", "Bloodscalp", "Bonechewer", "Borean Tundra", "Boulderfist", 
+         "Bleeding Hollow",  "Blood Furnace", "Bloodhoof", "Bloodscalp", "Bonechewer", "Borean Tundra", "Boulderfist",
          "Bronzebeard", "Broxigar",  "Burning Blade", "Burning Legion", "Caelestrasz", "Cairne", "Cenarion Circle", "Cenarius",
          "Cho'gall", "Chromaggus", "Coilfang", "Crushridge", "Daggerspine", "Dalaran", "Dalvengyr", "Dark Iron", "Darkspear",
          "Darrowmere", "Dath'Remar", "Dawnbringer", "Deathwing", "Demon Soul", "Dentarg", "Destromath", "Dethecus", "Detheroc",
