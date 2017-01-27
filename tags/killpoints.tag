@@ -23,13 +23,13 @@
   </div>
   <script>
     this.killpoints = opts.killpoints;
-    this.breakpoints = [194, 772, 1997, 4178, 8978];
+    this.breakpoints = [194, 578, 1225, 2181, 4800, 9600];
 
     estimate(killpoints) {
       var message;
 
       if (killpoints > this.breakpoints[this.breakpoints.length - 1]) {
-        message = "Wow! You should have received over 5 legendaries!";
+        message = 'Wow! You should have received over ' + this.breakpoints.length + ' legendaries!';
       } else {
         var amount = this.breakpoints.findIndex(function(breakpoint) {
           return breakpoint > killpoints;
