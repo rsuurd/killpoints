@@ -4,9 +4,11 @@ route('/', function() {
   riot.mount('#character-selection', 'character-selection');
 });
 route(function(region, realm, character) {
-  riot.mount('#character-selection', 'character-selection', { 'region': region, 'realm': realm, 'character': character });
+  var server = realm.replace(/\+/g, ' ');
 
-  calculate(region, realm.replace(/-/g, ' '), character, function(data) {
+  riot.mount('#character-selection', 'character-selection', { 'region': region, 'realm': server, 'character': character });
+
+  calculate(region, server, character, function(data) {
     riot.mount('#killpoints', 'killpoints', data);
   })
 });

@@ -32,7 +32,7 @@
       event.preventDefault();
 
       var region = this.refs.region.value;
-      var realm = this.refs.realm.value.trim().toLowerCase();
+      var realm = this.refs.realm.value.trim().toLowerCase().replace(' ', '+');
       var charactername = this.refs.character.value.trim().toLowerCase();
 
       if (region && realm && charactername) {
