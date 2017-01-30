@@ -1,6 +1,8 @@
 # Killpoints
 
-Built with [riotjs](http://riotjs.com/). This site calculates killpoints for characters based on [this spreadsheet](https://docs.google.com/spreadsheets/d/1uRPy-cc98TLHscgqMyjAz7yD3ON_dhaPDIr_Nand07U) and the information in [this thread](http://www.mmo-champion.com/threads/2091126-Real-Legendary-drop-rates-and-other-statistics-for-9785-chars-Spreadsheet).
+This site calculates killpoints for characters based on [this spreadsheet](https://docs.google.com/spreadsheets/d/1uRPy-cc98TLHscgqMyjAz7yD3ON_dhaPDIr_Nand07U) and the information in [this thread](http://www.mmo-champion.com/threads/2091126-Real-Legendary-drop-rates-and-other-statistics-for-9785-chars-Spreadsheet).
+
+Built with [riotjs](http://riotjs.com/).
 
 ## Frequently asked questions
 
