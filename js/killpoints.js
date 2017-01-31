@@ -30,10 +30,14 @@ function calculate(region, realm, character, callback) {
       throw Error(response.statusText);
     }
   }).then(function(json) {
-    callback({
-      'name': json.name,
-      'killpoints': getKillpoints(json)
-    });
+    if (json.level < 110) {
+      throw Error('Level to 110 first.');
+    } else {
+      callback({
+        'name': json.name,
+        'killpoints': getKillpoints(json)
+      });
+    }
   }).catch(function(error) {
     riot.mount('#killpoints', 'error', { message: error });
   });
