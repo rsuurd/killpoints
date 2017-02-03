@@ -34,7 +34,9 @@ function calculate(region, realm, character, callback) {
       throw Error('Level to 110 first.');
     } else {
       callback({
+        'region': region,
         'name': json.name,
+        'avatar': json.thumbnail,
         'killpoints': getKillpoints(json)
       });
     }
