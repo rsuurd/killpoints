@@ -14,7 +14,9 @@
           </div>
         </div>
 
-        <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_149.jpg" class="rounded" height="32" width="32"></img>
+        <a href="http://www.wowhead.com/item=132452/sephuzs-secret" rel="item=132452" target="_blank">
+          <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_149.jpg" class="rounded" height="32" width="32"></img>
+        </a>
       </div>
 
       <table class="table table-sm">
