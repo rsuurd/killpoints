@@ -46,7 +46,8 @@ input {
 
 .progress-legendary {
   width: calc(100% - 4rem);
-  margin: .5rem;
+  margin-top: .5rem;
+  margin-right: .5rem;
 }
 
 .bg-legendary {
