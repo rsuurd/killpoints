@@ -7,8 +7,8 @@
 
       <p class="card-text text-center">{ estimate(opts.killpoints) }</p>
 
-      <div class="py-2">
-        <div class="progress progress-legendary float-left" if={ progress(killpoints) }>
+      <div class="py-2" if={ progress(killpoints) }>
+        <div class="progress progress-legendary float-left">
           <div class="progress-bar bg-legendary" role="progressbar" style={ "width: " + progress(killpoints) + "%" }>
             Progress towards the next legendary: { Math.round(progress(killpoints)) }%
           </div>
@@ -67,14 +67,10 @@
         return breakpoint > killpoints;
       });
 
-      if (amount < this.breakpoints.length) {
+      if (amount >= 0) {
         var top = this.breakpoints[amount];
 
-        var x = (killpoints / top) * 100;
-
-        console.log(killpoints + ' / ' + top);
-
-        return x;
+        return (killpoints / top) * 100;
       }
     }
   </script>
