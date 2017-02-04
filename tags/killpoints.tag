@@ -6,6 +6,17 @@
       <p class="card-text text-center killpoints">{ opts.name } has <strong>{ opts.killpoints}</strong> killpoints.</p>
 
       <p class="card-text text-center">{ estimate(opts.killpoints) }</p>
+
+      <div class="py-2">
+        <div class="progress progress-legendary float-left" if={ progress(killpoints) }>
+          <div class="progress-bar bg-legendary" role="progressbar" style={ "width: " + progress(killpoints) + "%" }>
+            Progress towards the next legendary: { Math.round(progress(killpoints)) }%
+          </div>
+        </div>
+
+        <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_149.jpg" class="rounded" height="32" width="32"></img>
+      </div>
+
       <table class="table table-sm">
         <thead>
           <tr>
@@ -47,6 +58,22 @@
       }
 
       return message;
+    }
+
+    progress(killpoints) {
+      var amount = this.breakpoints.findIndex(function(breakpoint) {
+        return breakpoint > killpoints;
+      });
+
+      if (amount < this.breakpoints.length) {
+        var top = this.breakpoints[amount];
+
+        var x = (killpoints / top) * 100;
+
+        console.log(killpoints + ' / ' + top);
+
+        return x;
+      }
     }
   </script>
 </killpoints>

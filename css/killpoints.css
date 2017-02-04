@@ -43,3 +43,12 @@ input {
 .footer a, .footer em, .footer i {
   color: #fcab0e;
 }
+
+.progress-legendary {
+  width: calc(100% - 4rem);
+  margin: .5rem;
+}
+
+.bg-legendary {
+  background-color: #ff8000;
+}
