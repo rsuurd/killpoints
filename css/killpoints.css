@@ -50,6 +50,10 @@ input {
   margin-right: .5rem;
 }
 
+.legendary {
+  color: #ff8000;
+}
+
 .bg-legendary {
   background-color: #ff8000;
 }
