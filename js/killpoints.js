@@ -57,7 +57,7 @@ function getDailyKillpoints(achievements) {
   if (index >= 0) {
     var days110 = moment(new Date()).diff(achievements.achievementsCompletedTimestamp[index], 'days');
 
-    killpoints += days110 * 2;
+    killpoints += days110 * 4;
   }
 
   return killpoints;
@@ -71,7 +71,7 @@ function getWeeklyChestKillpoints(achievements) {
   if (index >= 0) {
     var weeklyChests = moment().diff(moment.max(CHEST_AVAILABLE, moment(achievements.achievementsCompletedTimestamp[index])), 'weeks');
 
-    killpoints += weeklyChests * 11;
+    killpoints += weeklyChests * 15;
   }
 
   return killpoints;
@@ -83,7 +83,7 @@ function getMythicPlusKillpoints(achievements) {
   KEYSTONES.forEach(function(keystone) {
     var index = achievements.criteria.indexOf(keystone);
 
-    killpoints += (index < 0) ? 0 : achievements.criteriaQuantity[index] * 3.5;
+    killpoints += (index < 0) ? 0 : achievements.criteriaQuantity[index] * 4;
   });
 
   return killpoints;
