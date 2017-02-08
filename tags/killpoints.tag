@@ -14,7 +14,7 @@
           </div>
         </div>
 
-        <a href="http://www.wowhead.com/item=132452/sephuzs-secret" rel="item=132452" target="_blank">
+        <a href="http://www.wowhead.com/item=132452/sephuzs-secret&bonus=3530" rel="item=132452,bonus=3530" target="_blank">
           <img src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_149.jpg" class="rounded" height="32" width="32"></img>
         </a>
       </div>
