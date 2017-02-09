@@ -46,7 +46,7 @@
           <p>
             The calculator uses the <em>Level 110</em> achievement to determine the amount of potential emissary and weekly caches you've gotten.
             Because this is an accountwide achievement, it will use the date when your first character dinged 110, so the amount of killpoints will be too high for recently dinged alts.
-            You can try enabling character-specific achievements ingame under <em>Interface > Social</em> but i doubt that works.
+            You can try enabling character-specific achievements ingame under <em>Interface > Social</em>.
           </p>
         </div>
       </div>
