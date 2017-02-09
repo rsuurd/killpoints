@@ -28,6 +28,10 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="alert alert-info text-center">
+            <strong>Note:</strong> Enable character specific achivements in-game under <em>Interface > Social</em>.
+          </div>
+
           <p>
             This calculator calculates your killpoints based on your character's battle.net profile.
             The following are considered:
@@ -36,11 +40,11 @@
           <ul>
             <li><strong>Weekly chest</strong>: The amount of weeks your character has been 110. <em>This assumes your character has gotten a weekly chest every week.</em></li>
             <li><strong>Emissary caches</strong>: The amount of days your character has been 110. <em>This assumes your character has been doing emissary caches every day.</em></li>
+            <li><strong>Dungeons</strong>: All difficulties count. Depleted mythic+ dungeons do count, but due to how this is tracked by battle.net they are valued as a regular mythic dungeon.</li>
             <li><strong>Raid boss kills</strong>: Boss kills in <em>Emerald Nightmare</em>, <em>Trial of Valor</em> and <em>Nighthold</em>. All difficulaties count.</li>
-            <li><strong>Mythic+ dungeons</strong>: Only successful ones are tracked by battle.net. There is no difference in killpoints between 1, 2 or 3 chesting it.</li>
           </ul>
 
-          <p>Nothing else is included. This means that for example PVP, world bosses and rare mobs are <u>not included</u> in the calculation.</p>
+          <p>BG's/RBG's, arena wins, world bosses and rare mobs are <u>not included</u> in the calculation.</p>
 
           <h6>A note on alts</h6>
           <p>
