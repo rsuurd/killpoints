@@ -38,7 +38,7 @@
   </div>
   <script>
     this.killpoints = opts.killpoints;
-    this.breakpoints = [194, 578, 1225, 2181, 4800, 9600];
+    this.breakpoints = [500, 1100, 2000, 3100, 4800, 7000];
 
     estimate(killpoints) {
       var message;
