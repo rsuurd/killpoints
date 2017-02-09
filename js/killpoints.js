@@ -17,7 +17,7 @@ route(function(region, realm, character) {
 function calculate(region, realm, character, callback) {
   riot.mount('#killpoints', 'loading');
 
-  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(realm) + '/' + encodeURIComponent(character) + '?fields=progression,achievements&apikey=' + API_KEY;
+  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(realm) + '/' + encodeURIComponent(character) + '?fields=progression,achievements,statistics&apikey=' + API_KEY;
 
   fetch(url, {
     headers: {
@@ -46,7 +46,8 @@ function calculate(region, realm, character, callback) {
 }
 
 function getKillpoints(json) {
-  return Math.round(getDailyKillpoints(json.achievements) + getWeeklyChestKillpoints(json.achievements) + getMythicPlusKillpoints(json.achievements) + getRaidKillpoints(json.progression.raids));
+  return Math.round(getDailyKillpoints(json.achievements) +
+    getWeeklyChestKillpoints(json.achievements) + getDungeonKillpoints(json) + getRaidKillpoints(json.progression.raids));
 }
 
 function getDailyKillpoints(achievements) {
@@ -77,16 +78,23 @@ function getWeeklyChestKillpoints(achievements) {
   return killpoints;
 }
 
-function getMythicPlusKillpoints(achievements) {
-  var killpoints = 0;
+function getDungeonKillpoints(json) {
+  var normalDungeons = 0;
+  var heroicDungeons = 0;
+  var mythicDungeons = 0;
 
-  KEYSTONES.forEach(function(keystone) {
-    var index = achievements.criteria.indexOf(keystone);
-
-    killpoints += (index < 0) ? 0 : achievements.criteriaQuantity[index] * 4;
+  json.statistics.subCategories.find(subCategory =>
+      subCategory.id == 14807).subCategories.find(subCategory => subCategory.id == 15264).statistics.forEach(dungeon => {
+    normalDungeons += (NORMAL_DUNGEONS.indexOf(dungeon.id) < 0) ? 0 : dungeon.quantity;
+    heroicDungeons += (HEROIC_DUNGEONS.indexOf(dungeon.id) < 0) ? 0 : dungeon.quantity;
+    mythicDungeons += (MYTHIC_DUNGEONS.indexOf(dungeon.id) < 0) ? 0 : dungeon.quantity;
   });
 
-  return killpoints;
+  var index = json.achievements.criteria.indexOf(33096);
+  var mythicPlusDungeons = (index < 0) ? 0 : json.achievements.criteriaQuantity[index];
+  var mythicZeroDungeons = mythicDungeons - mythicPlusDungeons;
+
+  return ((normalDungeons + heroicDungeons) * 2) + (mythicZeroDungeons * 3) + (mythicPlusDungeons * 4);
 }
 
 function getRaidKillpoints(raids) {
@@ -109,13 +117,6 @@ function getRaidKillpoints(raids) {
 const API_KEY = 'kr2bfgpv5wtx5entzwkvvq6kqpwfwg7e';
 
 const CHEST_AVAILABLE = moment('2016-09-21');
-
-const KEYSTONES = [
-  33096, // Initiate
-  33097, // Challenger
-  33098, // Conqueror
-  32028  // Master
-];
 
 const RAIDS = {
   8440: 'Trial of Valor',
