@@ -63,5 +63,8 @@ const REALMS = {
          "Thaurissan", "The Forgotten Coast", "The Scryers", "The Underbog", "The Venture Co", "Thorium Brotherhood", "Thrall",
          "Thunderhorn", "Thunderlord", "Tichondrius", "Tol Barad", "Tortheldrin", "Trollbane", "Turalyon", "Twisting Nether",
          "Uldaman", "Uldum", "Undermine", "Ursin", "Uther", "Vashj", "Vek'nilash", "Velen", "Warsong", "Whisperwind",
-         "Wildhammer", "Windrunner", "Winterhoof", "Wyrmrest Accord", "Ysera", "Ysondre", "Zangarmarsh", "Zul'jin", "Zuluhed"]
+         "Wildhammer", "Windrunner", "Winterhoof", "Wyrmrest Accord", "Ysera", "Ysondre", "Zangarmarsh", "Zul'jin", "Zuluhed"],
+   "kr": ["렉사르", "불타는 군단", "와일드해머", "가로나", "달라란", "데스윙", "라그나로스", "말퓨리온", "세나리우스", "알렉스트라자", "카르가스",
+          "하이잘", "헬스크림", "스톰레이지", "윈드러너", "굴단 (Gul'dan)", "노르간논", "듀로탄", "아즈샤라",  "에이그윈",  "엘룬", "이오나",
+          "줄진"]
 };
