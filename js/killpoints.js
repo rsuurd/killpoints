@@ -57,7 +57,8 @@ function getDailyKillpoints(achievements) {
 
   if (index >= 0) {
     var days110 = moment(new Date()).diff(achievements.achievementsCompletedTimestamp[index], 'days');
-
+    days110 += 2; //Add 2 extra dailies from first day of 110
+ 
     killpoints += days110 * 4;
   }
 
