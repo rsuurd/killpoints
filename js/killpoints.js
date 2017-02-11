@@ -3,21 +3,32 @@ route.start(true);
 route('/', function() {
   riot.mount('#character-selection', 'character-selection');
 });
-route(function(region, realm, character) {
-  var decodedRealm = decodeURIComponent(realm).replace(/\+/g, ' ');
-  var decodedCharacter = decodeURIComponent(character);
+route(function(region, realm, character, emissaries, weeklies) {
+  var characterInfo = {
+    region: region,
+    realm: decodeURIComponent(realm).replace(/\+/g, ' '),
+    character: decodeURIComponent(character)
+  };
 
-  riot.mount('#character-selection', 'character-selection', { 'region': region, 'realm': decodedRealm, 'character': decodedCharacter });
+  if (emissaries) {
+    characterInfo.emissaries = parseInt(emissaries)
+  }
 
-  calculate(region, decodedRealm, decodedCharacter, function(data) {
+  if (weeklies) {
+    characterInfo.weeklies = parseInt(weeklies)
+  }
+
+  riot.mount('#character-selection', 'character-selection', characterInfo);
+
+  calculate(characterInfo, function(data) {
     riot.mount('#killpoints', 'killpoints', data);
   })
 });
 
-function calculate(region, realm, character, callback) {
+function calculate(characterInfo, callback) {
   riot.mount('#killpoints', 'loading');
 
-  var url = 'https://' + encodeURIComponent(region) + '.api.battle.net/wow/character/' + encodeURIComponent(realm) + '/' + encodeURIComponent(character) + '?fields=progression,achievements,statistics&apikey=' + API_KEY;
+  var url = 'https://' + encodeURIComponent(characterInfo.region) + '.api.battle.net/wow/character/' + encodeURIComponent(characterInfo.realm) + '/' + encodeURIComponent(characterInfo.character) + '?fields=progression,achievements,statistics&apikey=' + API_KEY;
 
   fetch(url, {
     headers: {
@@ -34,10 +45,10 @@ function calculate(region, realm, character, callback) {
       throw Error('Level to 110 first.');
     } else {
       callback({
-        'region': region,
+        'region': characterInfo.region,
         'name': json.name,
         'avatar': json.thumbnail,
-        'killpoints': getKillpoints(json)
+        'killpoints': getKillpoints(characterInfo, json)
       });
     }
   }).catch(function(error) {
@@ -45,38 +56,41 @@ function calculate(region, realm, character, callback) {
   });
 }
 
-function getKillpoints(json) {
-  return Math.round(getDailyKillpoints(json.achievements) +
-    getWeeklyChestKillpoints(json.achievements) + getDungeonKillpoints(json) + getRaidKillpoints(json.progression.raids));
+function getKillpoints(characterInfo, json) {
+  return Math.round(getDailyKillpoints(characterInfo, json.achievements) +
+    getWeeklyChestKillpoints(characterInfo, json.achievements) + getDungeonKillpoints(json) + getRaidKillpoints(json.progression.raids));
 }
 
-function getDailyKillpoints(achievements) {
-  var killpoints = 0;
+function getDailyKillpoints(characterInfo, achievements) {
+  var emissaries = 0;
 
-  var index = achievements.achievementsCompleted.indexOf(10671);
+  if (characterInfo.hasOwnProperty('emissaries')) {
+    emissaries = characterInfo.emissaries;
+  } else {
+    var index = achievements.achievementsCompleted.indexOf(10671);
 
-  if (index >= 0) {
-    var days110 = moment(new Date()).diff(achievements.achievementsCompletedTimestamp[index], 'days');
-    days110 += 2; //Add 2 extra dailies from first day of 110
- 
-    killpoints += days110 * 4;
+    if (index >= 0) {
+      emissaries = moment(new Date()).diff(achievements.achievementsCompletedTimestamp[index], 'days') + 2;
+    }
   }
 
-  return killpoints;
+  return emissaries * 4;
 }
 
-function getWeeklyChestKillpoints(achievements) {
-  var killpoints = 0;
+function getWeeklyChestKillpoints(characterInfo, achievements) {
+  var weeklies = 0;
 
-  var index = achievements.achievementsCompleted.indexOf(10671);
+  if (characterInfo.hasOwnProperty('weeklies')) {
+    weeklies = characterInfo.weeklies;
+  } else {
+    var index = achievements.achievementsCompleted.indexOf(10671);
 
-  if (index >= 0) {
-    var weeklyChests = moment().diff(moment.max(CHEST_AVAILABLE, moment(achievements.achievementsCompletedTimestamp[index])), 'weeks');
-
-    killpoints += weeklyChests * 15;
+    if (index >= 0) {
+      weeklies = moment().diff(moment.max(CHEST_AVAILABLE, moment(achievements.achievementsCompletedTimestamp[index])), 'weeks');
+    }
   }
 
-  return killpoints;
+  return weeklies * 15;
 }
 
 function getDungeonKillpoints(json) {
