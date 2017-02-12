@@ -3,20 +3,24 @@ route.start(true);
 route('/', function() {
   riot.mount('#character-selection', 'character-selection');
 });
-route(function(region, realm, character, emissaries, weeklies) {
+route(function(region, realm, character) {
   var characterInfo = {
     region: region,
     realm: decodeURIComponent(realm).replace(/\+/g, ' '),
     character: decodeURIComponent(character)
   };
 
-  if (emissaries) {
-    characterInfo.emissaries = parseInt(emissaries)
+  var query = route.query();
+
+  if (query.emissaries) {
+    characterInfo.emissaries = parseInt(query.emissaries)
   }
 
-  if (weeklies) {
-    characterInfo.weeklies = parseInt(weeklies)
+  if (query.weeklies) {
+    characterInfo.weeklies = parseInt(query.weeklies)
   }
+
+  console.log(characterInfo);
 
   riot.mount('#character-selection', 'character-selection', characterInfo);
 
