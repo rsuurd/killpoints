@@ -20,8 +20,6 @@ route(function(region, realm, character) {
     characterInfo.weeklies = parseInt(query.weeklies)
   }
 
-  console.log(characterInfo);
-
   riot.mount('#character-selection', 'character-selection', characterInfo);
 
   calculate(characterInfo, function(data) {

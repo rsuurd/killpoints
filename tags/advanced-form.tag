@@ -72,7 +72,11 @@
     showSimpleForm(event) {
       event.preventDefault();
 
-      riot.mount('#form', 'simple-form');
+      riot.mount('#form', 'simple-form', {
+        region: this.refs.region.value,
+        realm: this.refs.realm.value,
+        character: this.refs.character.value
+      });
     }
   </script>
 </advanced-form>

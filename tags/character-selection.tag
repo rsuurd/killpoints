@@ -5,7 +5,8 @@
       <p class="card-text">Want to know when you are due for your next legendary? <a href="#" data-toggle="modal" data-target="#readme">How does this work?</a></p>
 
       <div id="form">
-        <simple-form/>
+        <simple-form if={ !(opts.emissaries || opts.weeklies) } region={ opts.region } realm={ opts.realm } character={ opts.character }/>
+        <advanced-form if={ opts.emissaries || opts.weeklies } region={ opts.region } realm={ opts.realm } character={ opts.character } emissaries={ opts.emissaries } weeklies={ opts.weeklies } />
       </div>
     </div>
   </div>

@@ -45,7 +45,7 @@
     showAdvancedForm(event) {
       event.preventDefault();
 
-      riot.mount('#form', 'advanced-form');
+      riot.mount('#form', 'advanced-form', { region: this.refs.region.value, realm: this.refs.realm.value, character: this.refs.character.value });
     }
   </script>
 </simple-form>
