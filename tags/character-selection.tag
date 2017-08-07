@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-block">
       <h1 class="display-3 card-title">Killpoints</h1>
-      <p class="card-text">Want to know how many killpoints you have? <a href="#" data-toggle="modal" data-target="#readme">How does this work?</a></p>
+      <p class="card-text">Want to know when you are due for your next legendary? <a href="#" data-toggle="modal" data-target="#readme">How does this work?</a></p>
 
       <div id="form">
         <simple-form if={ !(opts.emissaries || opts.weeklies) } region={ opts.region } realm={ opts.realm } character={ opts.character }/>

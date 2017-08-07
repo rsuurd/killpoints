@@ -44,6 +44,16 @@ input {
   color: #fcab0e;
 }
 
+.progress-legendary {
+  width: calc(100% - 4rem);
+  margin-top: .5rem;
+  margin-right: .5rem;
+}
+
 .legendary {
   color: #ff8000;
+}
+
+.bg-legendary {
+  background-color: #ff8000;
 }
